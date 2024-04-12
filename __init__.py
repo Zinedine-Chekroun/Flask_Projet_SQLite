@@ -58,6 +58,15 @@ def ReadBDD():
     conn.close()
     return render_template('read_data.html', data=data)
 
+@app.route('/consultation2/')
+def ReadBDD2():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Livre;')
+    data = cursor.fetchall()
+    conn.close()
+    return render_template('read_data.html', data=data)
+
 @app.route('/enregistrer_client', methods=['GET'])
 def formulaire_client():
     return render_template('formulaire.html')  # afficher le formulaire
@@ -91,10 +100,10 @@ def enregistrer_livre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau livre
-    cursor.execute('INSERT INTO Livre (created, nomLivre, auteur) VALUES (?, ?, ?)', (1002938, nomLivre, auteur))
+    cursor.execute('INSERT INTO Livre (created, nomLivre , auteur) VALUES (?, ?, ?)', (1002938, nomLivre, auteur,))
     conn.commit()
     conn.close()
-    return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
+    return redirect('/consultation2/')  # Rediriger vers la page d'accueil après l'enregistrement
                                                                                                                                                                                                           
 if __name__ == "__main__":
   app.run(debug=True)
