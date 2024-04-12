@@ -81,8 +81,8 @@ def enregistrer_client():
 def formulaire_livre():
     return render_template('formulaire2.html')  # afficher le formulaire
 
-@app.route('/enregistrer_client', methods=['POST'])
-def enregistrer_client():
+@app.route('/enregistrer_livre', methods=['POST'])
+def enregistrer_livre():
     nomLivre = request.form['nomLivre']
     auteur = request.form['auteur']
 
