@@ -22,7 +22,7 @@ def lecture():
         # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
         return redirect(url_for('authentification'))
   # Si l'utilisateur est authentifié
-    return "<h2>Bravo, vous êtes authentifié</h2>"
+    return redirect(url_for('fiche_nom/<string:nom_client>'))
 
 @app.route('/authentification', methods=['GET', 'POST'])
 def authentification():
@@ -31,7 +31,7 @@ def authentification():
         if request.form['username'] == 'admin' and request.form['password'] == 'password': # password à cacher par la suite
             session['authentifie'] = True
             # Rediriger vers la route lecture après une authentification réussie
-            return redirect(url_for('fiche_nom/<string:nom_client>'))
+            return redirect(url_for('lecture'))
         else:
             # Afficher un message d'erreur si les identifiants sont incorrects
             return render_template('formulaire_authentification.html', error=True)
