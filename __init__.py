@@ -21,14 +21,6 @@ def lecture():
     if not est_authentifie():
         # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
         return redirect(url_for('authentification'))
-    
-@app.route('/lecture2')
-def lecture():
-    if not est_authentifie():
-        # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
-        return redirect(url_for('fiche_nom/authentification'))  
-
-
   # Si l'utilisateur est authentifié
     return "<h2>Bravo, vous êtes authentifié</h2>"
 
