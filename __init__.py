@@ -96,7 +96,7 @@ def enregistrer_livre():
     auteur = request.form['auteur']
 
     # Connexion à la base de données
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect('schema.sql')
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau livre
