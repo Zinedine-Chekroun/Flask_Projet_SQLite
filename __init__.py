@@ -40,7 +40,7 @@ def authentification():
     return render_template('formulaire_authentification.html', error=False)
 
 
-@app.route('/fiche_nom/<string:nom_client>', methods=['GET', 'POST'])
+@app.route('/fiche_nom/authentification/<string:nom_client>', methods=['GET', 'POST'])
 def authentification2():
     if request.method == 'POST':
         # Vérifier les identifiants
