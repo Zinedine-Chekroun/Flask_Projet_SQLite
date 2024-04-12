@@ -39,6 +39,22 @@ def authentification():
 
     return render_template('formulaire_authentification.html', error=False)
 
+
+@app.route('/fiche_nom/<string:nom_client>', methods=['GET', 'POST'])
+def authentification2():
+    if request.method == 'POST':
+        # Vérifier les identifiants
+        if request.form['username'] == 'user' and request.form['password'] == '12345': # password à cacher par la suite
+            session['authentifie'] = True
+            # Rediriger vers la route lecture après une authentification réussie
+            return redirect(url_for('/fiche_nom/<string:nom_client>'))
+        else:
+            # Afficher un message d'erreur si les identifiants sont incorrects
+            return render_template('formulaire_authentification.html', error=True)
+
+    return render_template('formulaire_authentification.html', error=False)
+
+
 @app.route('/fiche_client/<int:post_id>')
 def Readfiche(post_id):
     conn = sqlite3.connect('database.db')
@@ -111,7 +127,7 @@ def enregistrer_livre():
     cursor = conn.cursor()
 
     # Exécution de la requête SQL pour insérer un nouveau livre
-    cursor.execute('INSERT INTO Livre (created, nom, prenom, adresse) VALUES (?, ?, ?, ?)', (1002938, nomLivre, auteur, "ICI"))
+    cursor.execute('INSERT INTO Livre (created, nom, prenom, adresse) VALUES (?, ?, ?, ?)', (1002938, nomLivre, auteur, "ICI" ))
     conn.commit()
     conn.close()
     return redirect('/consultation2/')  # Rediriger vers la page d'accueil après l'enregistrement
