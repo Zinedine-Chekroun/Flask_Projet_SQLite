@@ -12,5 +12,6 @@ CREATE TABLE Livre (
     created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     nomLivre TEXT NOT NULL,
     auteur TEXT NOT NULL
+    adresse TEXT NOT NULL
    
 );
