@@ -6,3 +6,10 @@ CREATE TABLE clients (
     prenom TEXT NOT NULL,
     adresse TEXT NOT NULL
 );
+CREATE TABLE Livre (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    nomLivre TEXT NOT NULL,
+    auteur TEXT NOT NULL
+   
+);
